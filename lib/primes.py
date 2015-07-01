@@ -13,5 +13,5 @@ def is_prime_rabin_miller(n, k=40):
     return False #TODO
 
 # Returns a random prime number with the given amount of bits.
-def random_prime(bits):
+def random_prime(random, bits):
     return 3 #TODO
