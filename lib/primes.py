@@ -3,7 +3,13 @@
 
 # Checks if a 'number' is prime.
 def is_prime(number):
-    return is_prime_rabin_miller(number) if number & 1 else number == 2
+    if number <= 1: return False
+    if number == 2: return True
+    if number & 1 == 0: return False
+
+    #TODO test against small primes here
+
+    return is_prime_rabin_miller(number)
 
 # Tests if a given 'number' is a strong pseudoprime or not, using
 # the Rabin-Miller primality test.
