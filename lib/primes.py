@@ -1,17 +1,27 @@
 # Module for prime numbers related functionality
 
-# Tests if a given number 'n' is a strong pseudoprime or not, using
+
+# Checks if a 'number' is prime.
+def is_prime(number):
+    return is_prime_rabin_miller(number) if number & 1 else number == 2
+
+# Tests if a given 'number' is a strong pseudoprime or not, using
 # the Rabin-Miller primality test.
 #
-# Will try as many bases as the specified 'k'. Note that the chance
+# Assumes that 'number' is odd.
+#
+# Will try as many bases as the specified 'iterations'. Note that the chance
 # of flagging a number as pseudoprime when it is composite is 1/4^k,
 # which quickly becomes more reliable than a deterministic test on
 # hardware: http://stackoverflow.com/a/4160517/395386
 #
 # For an explanation of the algorithm, see '../text/Rabin-Miller.md'.
-def is_prime_rabin_miller(n, k=40):
+def is_prime_rabin_miller(number, iterations=40):
+
     return False #TODO
 
-# Returns a random prime number with the given amount of bits.
+# Returns a random prime number with the given amount of 'bits'.
+# Uses the given 'random' generator.
 def random_prime(random, bits):
+
     return 3 #TODO
