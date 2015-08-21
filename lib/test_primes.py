@@ -8,19 +8,9 @@ class TestPrimes(unittest.TestCase):
     def test_random_prime_1024_bits(self):
         random.seed(42)
 
-        for i in range(1000):
-            prime = primes.random_prime(random, 1024)
-            self.assertEqual(1024, math.ceil(math.log(prime, 2)))
-            self.assertTrue(primes.is_prime(random, prime))
-
-    def test_prime_2(self):
-        self.assertTrue(primes.is_prime(random, 2))
-
-    def test_not_prime_1(self):
-        self.assertFalse(primes.is_prime(random, 1))
-
-    def test_prime_3(self):
-        self.assertTrue(primes.is_prime(random, 3))
+        prime = primes.random_prime(random, 1024)
+        self.assertEqual(1024, math.ceil(math.log(prime, 2)))
+        self.assertTrue(primes.is_prime(random, prime))
 
     def test_prime_1024_bits(self):
         self.assertTrue(primes.is_prime(random, self.big_prime))
