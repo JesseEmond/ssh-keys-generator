@@ -27,10 +27,10 @@ class TestPrimes(unittest.TestCase):
         self.assertTrue(primes.is_prime(self.big_prime))
 
     def test_rabin_miller_1024_bits(self):
-        self.assertTrue(primes.is_prime_rabin_miller(self.big_prime))
+        self.assertTrue(primes.is_prime_miller_rabin(self.big_prime))
 
     def test_not_prime_1024_bits(self):
         self.assertFalse(primes.is_prime(self.big_not_prime))
 
     def test_not_rabin_miller_1024_bits(self):
-        self.assertFalse(primes.is_prime_rabin_miller(self.big_not_prime))
+        self.assertFalse(primes.is_prime_miller_rabin(self.big_not_prime))
