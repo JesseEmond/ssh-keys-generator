@@ -1,13 +1,26 @@
 # Module for prime numbers related functionality
 
 
-# Checks if a 'number' is prime.
-def is_prime(number):
-    if number <= 1: return False
-    if number == 2: return True
-    if number & 1 == 0: return False
+# Checks if a 'number' is prime, using 'random' to generate values used
+# in probability primality tests.
+# 
+# Assumes that 'number' is greater than 100.
+def is_prime(random, number):
+    assert(number > 100)
+    if number & 1 == 0: return False # even number
 
-    return is_prime_miller_rabin(number)
+    # check for small primes (optimization)
+    if number %  3 == 0 or number %  5 == 0 or number %  7 == 0 or \
+       number % 11 == 0 or number % 13 == 0 or number % 17 == 0 or \
+       number % 19 == 0 or number % 23 == 0 or number % 29 == 0 or \
+       number % 31 == 0 or number % 37 == 0 or number % 41 == 0 or \
+       number % 43 == 0 or number % 47 == 0 or number % 53 == 0 or \
+       number % 59 == 0 or number % 61 == 0 or number % 67 == 0 or \
+       number % 71 == 0 or number % 73 == 0 or number % 79 == 0 or \
+       number % 83 == 0 or number % 89 == 0 or number % 97 == 0:
+        return False
+
+    return is_prime_miller_rabin(random, number)
 
 # Tests if a given 'number' is a strong pseudoprime or not, using
 # the Miller-Rabin primality test.
@@ -22,6 +35,7 @@ def is_prime(number):
 # For an explanation of the algorithm, see comments on
 # https://github.com/JesseEmond/benchmarkus-prime/blob/master/primes.py
 def is_prime_miller_rabin(random, number, iterations=40):
+    assert(number & 1 == 1)
     # get the form n - 1 = 2^s * d
     s = 0
     d = number - 1
@@ -50,8 +64,9 @@ def is_prime_miller_rabin(random, number, iterations=40):
 # Returns a random prime number with the given amount of 'bits'.
 # Uses the given 'random' generator.
 def random_prime(random, bits):
-
     while True:
-        
-
-    return 3 #TODO
+        min_val = pow(2, bits - 1) + 1
+        max_val = pow(2, bits) - 1
+        val = random.randrange(min_val, max_val, 2)
+        if is_prime(random, val):
+            return val

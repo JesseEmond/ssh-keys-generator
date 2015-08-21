@@ -1,6 +1,5 @@
-import unittest
 import primes
-import random, math
+import random, math, unittest
 
 class TestPrimes(unittest.TestCase):
     big_prime = 121999492637070040497464880653482451122159715698431661862504934268987469885677710797799523307422120568454593141727668682332216679465216347609718241998150443969871262326615939878834844507147192404574401325870276945218845272041195113380201145626974399759092850500988371156171063899568397919181947787377580179491
@@ -12,25 +11,25 @@ class TestPrimes(unittest.TestCase):
         for i in range(1000):
             prime = primes.random_prime(random, 1024)
             self.assertEqual(1024, math.ceil(math.log(prime, 2)))
-            self.assertTrue(primes.is_prime(prime))
+            self.assertTrue(primes.is_prime(random, prime))
 
     def test_prime_2(self):
-        self.assertTrue(primes.is_prime(2))
+        self.assertTrue(primes.is_prime(random, 2))
 
     def test_not_prime_1(self):
-        self.assertFalse(primes.is_prime(1))
+        self.assertFalse(primes.is_prime(random, 1))
 
     def test_prime_3(self):
-        self.assertTrue(primes.is_prime(3))
+        self.assertTrue(primes.is_prime(random, 3))
 
     def test_prime_1024_bits(self):
-        self.assertTrue(primes.is_prime(self.big_prime))
+        self.assertTrue(primes.is_prime(random, self.big_prime))
 
     def test_rabin_miller_1024_bits(self):
-        self.assertTrue(primes.is_prime_miller_rabin(self.big_prime))
+        self.assertTrue(primes.is_prime_miller_rabin(random, self.big_prime))
 
     def test_not_prime_1024_bits(self):
-        self.assertFalse(primes.is_prime(self.big_not_prime))
+        self.assertFalse(primes.is_prime(random, self.big_not_prime))
 
     def test_not_rabin_miller_1024_bits(self):
-        self.assertFalse(primes.is_prime_miller_rabin(self.big_not_prime))
+        self.assertFalse(primes.is_prime_miller_rabin(random, self.big_not_prime))
