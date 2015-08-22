@@ -1,11 +1,11 @@
 # Module for prime numbers related functionality
 
-
-# Checks if a 'number' is prime, using 'random' to generate values used
-# in probability primality tests.
-# 
-# Assumes that 'number' is greater than 100.
 def is_prime(random, number):
+    """Checks if a 'number' is prime, using 'random' to generate values
+    used in probability primality tests.
+
+    Assumes that 'number' is greater than 100.
+    """
     assert(number > 100)
     if number & 1 == 0: return False # even number
 
@@ -22,19 +22,20 @@ def is_prime(random, number):
 
     return is_prime_miller_rabin(random, number)
 
-# Tests if a given 'number' is a strong pseudoprime or not, using
-# the Miller-Rabin primality test.
-#
-# Assumes that 'number' is odd.
-#
-# Will try as many bases as the specified 'iterations'. Note that the chance
-# of flagging a number as pseudoprime when it is composite is 1/4^k,
-# which quickly becomes reliable enough compared to a deterministic test on
-# hardware: http://stackoverflow.com/a/4160517/395386
-#
-# For an explanation of the algorithm, see comments on
-# https://github.com/JesseEmond/benchmarkus-prime/blob/master/primes.py
 def is_prime_miller_rabin(random, number, iterations=40):
+    """Tests if a given 'number' is a strong pseudoprime or not, using
+    the Miller-Rabin primality test.
+
+    Assumes that 'number' is odd.
+
+    Will try as many bases as the specified 'iterations'. Note that the chance
+    of flagging a number as pseudoprime when it is composite is 1/4^k,
+    which quickly becomes reliable enough compared to a deterministic test on
+    hardware: http://stackoverflow.com/a/4160517/395386
+
+    For an explanation of the algorithm, see comments on
+    https://github.com/JesseEmond/benchmarkus-prime/blob/master/primes.py
+    """
     assert(number & 1 == 1)
     # get the form n - 1 = 2^s * d
     s = 0
@@ -61,9 +62,10 @@ def is_prime_miller_rabin(random, number, iterations=40):
 
     return True
 
-# Returns a random prime number with the given amount of 'bits'.
-# Uses the given 'random' generator.
 def random_prime(random, bits):
+    """Returns a random prime number with the given amount of 'bits'.
+    Uses the given 'random' generator.
+    """
     while True:
         min_val = pow(2, bits - 1) + 1
         max_val = pow(2, bits) - 1
