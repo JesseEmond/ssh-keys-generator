@@ -1,4 +1,11 @@
-# Module for prime numbers related functionality
+"""Module for prime numbers related functionality
+
+Functions:
+    is_prime --- checks if a number is prime (with a % of error)
+    is_prime_miller_rabin -- checks if a number is a pseudoprime
+    random_prime --- generates a random prime
+"""
+
 
 def is_prime(random, number):
     """Checks if a 'number' is prime, using 'random' to generate values
