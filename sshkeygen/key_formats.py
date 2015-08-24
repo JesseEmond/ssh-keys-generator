@@ -76,6 +76,13 @@ def private_key(params):
     #TODO
     pass
 
-def public_key(params):
-    #TODO
-    pass
+def public_key(params, comment):
+    """Produces the OpenSSH public key format from the RSA parameters and a key
+    comment.
+    Used http://blog.oddbit.com/2011/05/08/converting-openssh-public-keys/ as a
+    resource.
+    """
+    keytype = 'ssh-rsa'
+    blob = public_key_blob(params)
+
+    return " ".join([keytype, blob, comment])

@@ -6,7 +6,12 @@ class TestKeyFormats(unittest.TestCase):
     q = 0x00EB4699695313DEF97DC6DCBED61E920EEC05275C18B4FFF77E9AB4BC30A544DAA06B534055439A437E654B1FDC00273FA98B1B3047532EA3F09DD2D1B1D2E2DB04EB3A27E5A51E56A88CDEA965C58DD7ADFA6C5D08D4228A57381844D50B150193F0289F2A70F2CB3E7917E946262C669D12939A4ADBFFA972394A8807167E61
     params = rsa.RsaParams(p, q)
 
-    def test_public_key_blob(self):
+    def test_sample_public_key_blob(self):
         blob = key_formats.public_key_blob(self.params)
 
         self.assertEqual("AAAAB3NzaC1yc2EAAAADAQABAAABAQDdW271jTDWSuUHFXUlFTgqGjVtBM1TqnczCh1ZcUS1qrssr9jfpLa3gGg49aRQtjOKsHl2ZOym+/H5lhyuS2zVkNwZ7SUqmwjhwBiQfme40ZFKHp6urxO57++ljewngF20yr1tQCNq4/YDTf4dN9/V6v/EkP1cBWS/FMCmP2svkHSO8w819EQ8NIWBuXVd4e0E9HxdI+v76yGXBCLAyapadMho/xnh9DVSezO+XCkc4T6LVzQ43LbQklB1p17PoFFOZyn+rDpJKg2LSoM+v8eGuVyVKWziT0W54CB/0q4VK1lOBEqU5D71uWCBzLco1mxnarV1mlJZKijFPTjM1pl3", blob) 
+
+    def test_sample_public_key(self):
+        key = key_formats.public_key(self.params, 'dysleixa@arch')
+
+        self.assertEqual("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdW271jTDWSuUHFXUlFTgqGjVtBM1TqnczCh1ZcUS1qrssr9jfpLa3gGg49aRQtjOKsHl2ZOym+/H5lhyuS2zVkNwZ7SUqmwjhwBiQfme40ZFKHp6urxO57++ljewngF20yr1tQCNq4/YDTf4dN9/V6v/EkP1cBWS/FMCmP2svkHSO8w819EQ8NIWBuXVd4e0E9HxdI+v76yGXBCLAyapadMho/xnh9DVSezO+XCkc4T6LVzQ43LbQklB1p17PoFFOZyn+rDpJKg2LSoM+v8eGuVyVKWziT0W54CB/0q4VK1lOBEqU5D71uWCBzLco1mxnarV1mlJZKijFPTjM1pl3 dysleixa@arch", key)
