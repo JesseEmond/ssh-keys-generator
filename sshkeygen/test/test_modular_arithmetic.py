@@ -1,4 +1,4 @@
-import modular_arithmetic
+from .. import modular_arithmetic
 import unittest
 
 class TestModularArithmetic(unittest.TestCase):

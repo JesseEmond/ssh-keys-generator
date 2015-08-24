@@ -1,4 +1,4 @@
-from rsa import RsaParams
+from ..rsa import RsaParams
 import unittest
 
 class TestRsa(unittest.TestCase):

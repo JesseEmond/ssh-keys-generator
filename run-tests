@@ -1,4 +1,3 @@
 #!/bin/bash
 
-cd lib
 python -m unittest discover

@@ -3,7 +3,7 @@
         RsaParams --- RSA public/private precalculated parameters
 """
 
-from lib.modular_arithmetic import mod_inv
+from .modular_arithmetic import mod_inv
 
 class RsaParams(object):
     """RSA public/private precalculated parameters, calculated from

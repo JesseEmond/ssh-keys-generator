@@ -1,4 +1,4 @@
-import primes
+from .. import primes
 import random, math, unittest
 
 class TestPrimes(unittest.TestCase):
@@ -8,8 +8,8 @@ class TestPrimes(unittest.TestCase):
     def test_random_prime_1024_bits(self):
         random.seed(42)
 
-        prime = primes.random_prime(random, 1024)
-        self.assertEqual(1024, math.ceil(math.log(prime, 2)))
+        prime = primes.random_prime(random, 512)
+        self.assertEqual(512, math.ceil(math.log(prime, 2)))
         self.assertTrue(primes.is_prime(random, prime))
 
     def test_prime_1024_bits(self):

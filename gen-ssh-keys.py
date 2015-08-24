@@ -1,7 +1,7 @@
 #!/bin/python
 
 import argparse, random
-from lib import primes, rsa
+from sshkeygen import primes, rsa
 
 parser = argparse.ArgumentParser(description='Generate an SSH RSA key pair.')
 parser.add_argument('--out', '-o', metavar='output-file', default='id_rsa',
