@@ -7,20 +7,28 @@ if you want to improve this as a learning resource.
 ## Usage
 TODO
 
+**Note**: assumes that you are using Python 3.
+
 ## Example
 TODO
 
+## Setup
+Run `./setup` to download the required dependencies (might need `sudo`).
+
+**Note**: assumes that you have
+[`pip`](https://pypi.python.org/pypi/pip) available.
+
 ## Running Unit Tests
-Use `./tests` to execute the unit tests (conveniently does
+Use `./run-tests` to execute the unit tests (conveniently does
 `python -m unittest discover` for you).
 
 ## Documentation
-TODO refer to text/
+TODO refer to other repo
 
 ### todo
-- [ ] Primality testing
-- [ ] Prime generation
-- [ ] RSA parameters generation
-- [ ] RSA public key format output
+- [x] Primality testing
+- [x] Prime generation
+- [x] RSA parameters generation
+- [x] RSA public key format output
 - [ ] RSA private key format output
 - [ ] Test with OpenSSH

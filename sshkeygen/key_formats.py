@@ -8,19 +8,27 @@
                                 from the given RsaParams.
         public_key(params) --- produces the OpenSSH public key format
                                from the given RsaParams.
-
-    Note: done manually for learning purposes, should normally use a lib such as
-          http://pyasn1.sourceforge.net/ for ASN1, at the very least.
 """
 
 import struct, base64, math
 
 def private_key_blob(params):
-    #TODO
+    """Produces the PKCS#1 private key ASN1 blob of the precomputed RSA
+    parameters.
+
+
+
+    The key has the following data encoded:
+    - algorithm used (ssh-rsa, ssh-dsa, ...)
+    - public exponent (e)
+    - modulus (n)
+
+    Return a base64 of the resulting concatenation of the pairs.
+    """
     pass
 
 def encode_openssh_blob_data(data):
-    """Encodes a single blob of data to be inserted in an OpenSSH key.
+    """Encodes a single data chunk from the blob inserted in an OpenSSH key.
 
     The data is encoded as a length-data pair:
     - length of the data as 4 octets in big-endian order
@@ -32,7 +40,7 @@ def encode_openssh_blob_data(data):
     return length + data
 
 def encode_mpint(num):
-    """Encodes a mpint, as defined by https://www.ietf.org/rfc/rfc4251.txt .
+    """Encodes an mpint, as defined by https://www.ietf.org/rfc/rfc4251.txt .
     Basically, this splits the number into its bytes (big-endian) and
     puts a leading 0 if necessary (if the most significant bit is set,
     as we only deal with unsigned integers in our context and don't want
@@ -63,7 +71,7 @@ def public_key_blob(params):
     Return a base64 of the resulting concatenation of the pairs.
     """
 
-    algo = 'ssh-rsa'
+    algo = b'ssh-rsa'
     exponent = encode_mpint(params.publicExponent)
     modulus = encode_mpint(params.modulus)
     parts = [algo, exponent, modulus]
@@ -83,6 +91,6 @@ def public_key(params, comment):
     resource.
     """
     keytype = 'ssh-rsa'
-    blob = public_key_blob(params)
+    blob = public_key_blob(params).decode('utf-8')
 
     return " ".join([keytype, blob, comment])

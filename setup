@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pip-2.7 install pyasn1
