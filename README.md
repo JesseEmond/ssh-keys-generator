@@ -33,7 +33,6 @@ Use `./run-tests` to execute the unit tests (conveniently does
 For additional documentation on Miller-Rabin, see this other repository
 related to primality testing: 
 [benchmarkus-prime](https://github.com/JesseEmond/benchmarkus-prime)
-TODO refer to other repo
 
 ### todo
 - [x] Primality testing
