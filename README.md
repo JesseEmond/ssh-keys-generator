@@ -12,7 +12,7 @@ if you want to improve this as a learning resource.
 ## Usage
 ```
 > ./gen-ssh-keys.py --help
-$ usage: gen-ssh-keys.py [-h] [--out output-file] [--bits BITS] [--verbose]
+$ usage: gen-ssh-keys.py [-h] [--out OUTPUT-FILE] [--bits BITS] [--verbose]
 $                        [--comment COMMENT]
 $
 $ Generate an SSH RSA key pair.
