@@ -93,7 +93,7 @@ def encode_mpint(num):
         packed.append(num % BYTE_SIZE) 
         num //= BYTE_SIZE
 
-    if packed[len(packed)-1] & 0x80 != 0: # sign-bit would be set? prepend 0.
+    if packed[-1] & 0x80 != 0: # sign-bit would be set? prepend 0.
         packed.append(0) # will be reversed
 
     packed.reverse() # put in netword-order
