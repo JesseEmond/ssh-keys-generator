@@ -19,7 +19,7 @@ $ Generate an SSH RSA key pair.
 $
 $ optional arguments:
 $   -h, --help            show this help message and exit
-$   --out output-file, -o output-file
+$   --out OUTPUT-FILE, -o output-file
 $                         File prefix for the key generated (output-file and
 $                         output-file.pub)
 $   --bits BITS, -b BITS  Length (in bits) of the key generated
