@@ -55,9 +55,9 @@ $ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQCIqB+ ... gYInDMtwHet4vwOmMublq9RxCCgK1F
 
 ```
 > cat id_rsa
------BEGIN RSA PRIVATE KEY-----
-MIISJwIBAAKCBAEAiKgfrZnsSRXfY1SIdvB+ ... OAj4ktw1PPIzxx9sWgNL5DUbYBqMbdeuVf47iTEFNVT3ac2NfEltpQ==
------END RSA PRIVATE KEY-----
+$ -----BEGIN RSA PRIVATE KEY-----
+$ MIISJwIBAAKCBAEAiKgfrZnsSRXfY1SIdvB+ ... OAj4ktw1PPIzxx9sWgNL5DUbYBqMbdeuVf47iTEFNVT3ac2NfEltpQ==
+$ -----END RSA PRIVATE KEY-----
 ```
 
 ## Setup
