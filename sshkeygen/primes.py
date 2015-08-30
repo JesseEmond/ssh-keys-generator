@@ -74,8 +74,13 @@ def random_prime(random, bits):
     Uses the given 'random' generator.
     """
     while True:
-        min_val = pow(2, bits - 1) + 1
-        max_val = pow(2, bits) - 1
-        val = random.randrange(min_val, max_val, 2)
+        val = random_odd_number(random, bits)
+
         if is_prime(random, val):
             return val
+
+def random_odd_number(random, bits):
+    """Returns a random odd number with the given amount of 'bits'."""
+    min_val = pow(2, bits - 1) + 1
+    max_val = pow(2, bits) - 1
+    return random.randrange(min_val, max_val, 2)
