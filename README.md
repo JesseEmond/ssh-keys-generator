@@ -1,12 +1,10 @@
 # SSH RSA key-pair generation
 Generates an SSH RSA key-pair for **educational purposes** only.
 
-*This originated from a friend offering to create a user for me on his
-server and asking for generated SSH keys. I was working on an assignment
-related to Miller-Rabin at the time and jokingly said that I would make the
-generator myself. I ended up thinking that the experience would be worth it
-figured that I would really do it. A couple of classes and late hours later,
-her it is.*
+*This originated from a friend offering to create a user for me on his server and
+asking for generated SSH keys. I was working on an assignment related to
+Miller-Rabin at the time and jokingly said that I would make the generator
+myself. A couple of classes and late hours later, here it is.*
 
 Do not use in any serious context. Feel free to open issues or pull requests
 if you want to improve this as a learning resource.
