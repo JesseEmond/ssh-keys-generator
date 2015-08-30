@@ -19,15 +19,18 @@ class PrivateKeySequence(univ.SequenceOf):
     componentType = univ.Integer()
 
 
-def encode_pem(string):
+def insert_newlines(bytestring, every):
+    """Inserts a newline at a fixed interval into the string."""
+    lines = []
+    for i in range(0, len(bytestring), every):
+        lines.append(bytestring[i:i+every])
+    return b'\n'.join(lines)
+
+def encode_pem(bytestring):
     """Encodes the given string using PEM"""
-    pem = base64.encodebytes(string)
+    b64 = base64.b64encode(bytestring)
 
-    # pem adds a newline at the end, but remove it to simplify the other modules.
-    if pem[-1] == ord('\n'):
-        pem = pem[:-1]
-
-    return pem
+    return insert_newlines(b64, 64)
 
 def private_key_blob(params):
     """Produces the PKCS#1 private key ASN1 blob of the precomputed RSA
