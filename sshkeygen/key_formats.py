@@ -128,7 +128,7 @@ def private_key(params):
     blob = private_key_blob(params).decode('utf-8')
     begin = "-----BEGIN RSA PRIVATE KEY-----"
     end   = "-----END RSA PRIVATE KEY-----"
-    return "{0}\n{1}\n{2}".format(begin, blob, end)
+    return "{0}\n{1}\n{2}\n".format(begin, blob, end)
 
 def public_key(params, comment):
     """Produces the OpenSSH public key format from the RSA parameters and a key
@@ -139,4 +139,4 @@ def public_key(params, comment):
     keytype = 'ssh-rsa'
     blob = public_key_blob(params).decode('utf-8')
 
-    return " ".join([keytype, blob, comment])
+    return " ".join([keytype, blob, comment]) + "\n"
