@@ -18,6 +18,17 @@ class PrivateKeySequence(univ.SequenceOf):
     """ASN.1 sequence used for the private key format."""
     componentType = univ.Integer()
 
+
+def encode_pem(string):
+    """Encodes the given string using PEM"""
+    pem = base64.encodebytes(string)
+
+    # pem adds a newline at the end, but remove it to simplify the other modules.
+    if pem[-1] == ord('\n'):
+        pem = pem[:-1]
+
+    return pem
+
 def private_key_blob(params):
     """Produces the PKCS#1 private key ASN1 blob of the precomputed RSA
     parameters.
@@ -51,7 +62,7 @@ def private_key_blob(params):
     seq.setComponentByPosition(8, params.coefficient)
 
     der = encoder.encode(seq)
-    return base64.b64encode(der)
+    return encode_pem(der)
 
 def encode_openssh_blob_data(data):
     """Encodes a single data chunk from the blob inserted in an OpenSSH key.
@@ -104,7 +115,7 @@ def public_key_blob(params):
 
     raw = bytearray().join(map(encode_openssh_blob_data, parts))
 
-    return base64.b64encode(raw)
+    return encode_pem(raw)
 
 def private_key(params):
     """Produces the PKCS#1 format of the private key for the given
