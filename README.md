@@ -48,13 +48,13 @@ $ Public key saved to: id_rsa.pub
 $ Done!
 ```
 
-Public key generated:
 ```
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQCIqB+ ... gYInDMtwHet4vwOmMublq9RxCCgK1FVkMmtvQeYq8JTywDcg2XbUF04wrCHXr 
+> cat id_rsa.pub
+$ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQCIqB+ ... gYInDMtwHet4vwOmMublq9RxCCgK1FVkMmtvQeYq8JTywDcg2XbUF04wrCHXr 
 ```
 
-Private key generated:
 ```
+> cat id_rsa
 -----BEGIN RSA PRIVATE KEY-----
 MIISJwIBAAKCBAEAiKgfrZnsSRXfY1SIdvB+ ... OAj4ktw1PPIzxx9sWgNL5DUbYBqMbdeuVf47iTEFNVT3ac2NfEltpQ==
 -----END RSA PRIVATE KEY-----
