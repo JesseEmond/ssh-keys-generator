@@ -4,7 +4,7 @@ import argparse, random
 from sshkeygen import primes, rsa, key_formats
 
 parser = argparse.ArgumentParser(description='Generate an SSH RSA key pair.')
-parser.add_argument('--out', '-o', metavar='output-file', default='id_rsa',
+parser.add_argument('--out', '-o', metavar='OUTPUT-FILE', default='id_rsa',
                     help='File prefix for the key generated (output-file and output-file.pub)')
 parser.add_argument('--bits', '-b', default=4096, type=int,
                     help='Length (in bits) of the key generated')
