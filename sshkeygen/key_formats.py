@@ -115,7 +115,7 @@ def public_key_blob(params):
 
     raw = bytearray().join(map(encode_openssh_blob_data, parts))
 
-    return encode_pem(raw)
+    return base64.b64encode(raw)
 
 def private_key(params):
     """Produces the PKCS#1 format of the private key for the given
