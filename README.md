@@ -58,6 +58,12 @@ $ MIISJwIBAAKCBAEAiKgfrZnsSRXfY1SIdvB+ ... OAj4ktw1PPIzxx9sWgNL5DUbYBqMbdeuVf47i
 $ -----END RSA PRIVATE KEY-----
 ```
 
+We may then test that our generated files make sense using `ssh-keygen`:
+```
+> diff <(ssh-keygen -y -f id_rsa) id_rsa.pub
+$ (no diff)
+```
+
 ## Setup
 Run `./setup` to download the required dependencies (might need `sudo`).
 
