@@ -16,6 +16,13 @@ class TestKeyFormats(unittest.TestCase):
 
         self.assertEqual("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdW271jTDWSuUHFXUlFTgqGjVtBM1TqnczCh1ZcUS1qrssr9jfpLa3gGg49aRQtjOKsHl2ZOym+/H5lhyuS2zVkNwZ7SUqmwjhwBiQfme40ZFKHp6urxO57++ljewngF20yr1tQCNq4/YDTf4dN9/V6v/EkP1cBWS/FMCmP2svkHSO8w819EQ8NIWBuXVd4e0E9HxdI+v76yGXBCLAyapadMho/xnh9DVSezO+XCkc4T6LVzQ43LbQklB1p17PoFFOZyn+rDpJKg2LSoM+v8eGuVyVKWziT0W54CB/0q4VK1lOBEqU5D71uWCBzLco1mxnarV1mlJZKijFPTjM1pl3 dysleixa@arch\n", key)
 
+    def test_sample_public_key_no_comment_no_empty_space(self):
+        # this test is there to assure that we get the same output compared to
+        # ssh-keygen -y
+        key = key_formats.public_key(self.params, '')
+
+        self.assertEqual("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdW271jTDWSuUHFXUlFTgqGjVtBM1TqnczCh1ZcUS1qrssr9jfpLa3gGg49aRQtjOKsHl2ZOym+/H5lhyuS2zVkNwZ7SUqmwjhwBiQfme40ZFKHp6urxO57++ljewngF20yr1tQCNq4/YDTf4dN9/V6v/EkP1cBWS/FMCmP2svkHSO8w819EQ8NIWBuXVd4e0E9HxdI+v76yGXBCLAyapadMho/xnh9DVSezO+XCkc4T6LVzQ43LbQklB1p17PoFFOZyn+rDpJKg2LSoM+v8eGuVyVKWziT0W54CB/0q4VK1lOBEqU5D71uWCBzLco1mxnarV1mlJZKijFPTjM1pl3\n", key)
+
     def test_sample_private_key_blob(self):
         blob = key_formats.private_key_blob(self.params)
 

@@ -139,4 +139,9 @@ def public_key(params, comment):
     keytype = 'ssh-rsa'
     blob = public_key_blob(params).decode('utf-8')
 
-    return " ".join([keytype, blob, comment]) + "\n"
+    data = [keytype, blob]
+
+    if comment != '': # only want to add a trailing space if nonempty
+        data.append(comment)
+
+    return " ".join(data) + "\n"
