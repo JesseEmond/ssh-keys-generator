@@ -107,8 +107,14 @@ def public_key_blob(params):
     return base64.b64encode(raw)
 
 def private_key(params):
-    #TODO
-    pass
+    """Produces the PKCS#1 format of the private key for the given
+    RSA paramters.
+    Used https://tools.ietf.org/html/rfc3447#page-7 as a resource.
+    """
+    blob = private_key_blob(params).decode('utf-8')
+    begin = "-----BEGIN RSA PRIVATE KEY-----"
+    end   = "-----END RSA PRIVATE KEY-----"
+    return "{0}\n{1}\n{2}".format(begin, blob, end)
 
 def public_key(params, comment):
     """Produces the OpenSSH public key format from the RSA parameters and a key
