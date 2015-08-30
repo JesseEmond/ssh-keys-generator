@@ -11,21 +11,47 @@
 """
 
 import struct, base64, math
+from pyasn1.type import univ
+from pyasn1.codec.der import encoder
+
+class PrivateKeySequence(univ.SequenceOf):
+    """ASN.1 sequence used for the private key format."""
+    componentType = univ.Integer()
 
 def private_key_blob(params):
     """Produces the PKCS#1 private key ASN1 blob of the precomputed RSA
     parameters.
 
+    The key has the following ASN.1 structure:
+    RSAPrivateKey ::= SEQUENCE {
+        version           Version,
+        modulus           INTEGER,  -- n
+        publicExponent    INTEGER,  -- e
+        privateExponent   INTEGER,  -- d
+        prime1            INTEGER,  -- p
+        prime2            INTEGER,  -- q
+        exponent1         INTEGER,  -- d mod (p-1)
+        exponent2         INTEGER,  -- d mod (q-1)
+        coefficient       INTEGER,  -- (inverse of q) mod p
+    }
+    (source: https://tools.ietf.org/html/rfc3447#page-7)
 
-
-    The key has the following data encoded:
-    - algorithm used (ssh-rsa, ssh-dsa, ...)
-    - public exponent (e)
-    - modulus (n)
-
-    Return a base64 of the resulting concatenation of the pairs.
+    Returns the resulting DER-encoded blob base64-encoded.
     """
-    pass
+    seq = PrivateKeySequence()
+
+    seq.setComponentByPosition(0, 0)
+    seq.setComponentByPosition(1, params.modulus)
+    seq.setComponentByPosition(2, params.publicExponent)
+    seq.setComponentByPosition(3, params.privateExponent)
+    seq.setComponentByPosition(4, params.prime1)
+    seq.setComponentByPosition(5, params.prime2)
+    seq.setComponentByPosition(6, params.exponent1)
+    seq.setComponentByPosition(7, params.exponent2)
+    seq.setComponentByPosition(8, params.coefficient)
+
+    der = encoder.encode(seq)
+    return base64.b64encode(der)
 
 def encode_openssh_blob_data(data):
     """Encodes a single data chunk from the blob inserted in an OpenSSH key.
