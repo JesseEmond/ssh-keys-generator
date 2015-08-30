@@ -30,5 +30,5 @@ TODO refer to other repo
 - [x] Prime generation
 - [x] RSA parameters generation
 - [x] RSA public key format output
-- [ ] RSA private key format output
+- [x] RSA private key format output
 - [ ] Test with OpenSSH
