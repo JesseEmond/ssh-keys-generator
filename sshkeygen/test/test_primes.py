@@ -23,3 +23,13 @@ class TestPrimes(unittest.TestCase):
 
     def test_not_rabin_miller_1024_bits(self):
         self.assertFalse(primes.is_prime_miller_rabin(random, self.big_not_prime))
+
+    def test_small_primes_are_primes(self):
+        def lame_prime_test(n):
+            return not any([x for x in range(2, n) if n % x == 0])
+
+        for prime in primes._SMALL_PRIMES:
+            self.assertTrue(lame_prime_test(prime))
+
+    def test_small_primes_are_ordered(self):
+        self.assertTrue(sorted(primes._SMALL_PRIMES) == primes._SMALL_PRIMES)
